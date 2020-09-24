@@ -29,6 +29,10 @@
   margin-left: 0.5rem;
 }
 
+.second-title {
+  text-align: center;
+}
+
 .footer a {
   display: flex;
   justify-content: center;
