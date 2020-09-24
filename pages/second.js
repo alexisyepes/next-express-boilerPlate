@@ -10,7 +10,7 @@ export default (Second) => {
           <a>First page</a>
         </Link>
       </button>
-      <h2 className={styles.mainTitle}>Second Pageeeee</h2>
+      <h2 className={styles.mainTitle}>Second Page</h2>
       {/* <Button /> */}
     </div>
   );
