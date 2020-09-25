@@ -37,12 +37,12 @@ const Second = (data) => {
   );
 };
 
-Second.getInitialProps = async function ({ req }) {
-  const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";
-  const res = await fetch(baseUrl + "/api/all_persons"); //in development
-  // const res = await fetch(
-  //   "https://next-app-alex-yepes-test.herokuapp.com/api/all_persons" //in production
-  // );
+Second.getInitialProps = async function () {
+  // const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";
+  // const res = await fetch(baseUrl + "/api/all_persons"); //in development
+  const res = await fetch(
+    "https://next-app-alex-yepes-test.herokuapp.com/api/all_persons" //in production
+  );
   const data = await res.json();
 
   return {
