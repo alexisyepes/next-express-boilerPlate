@@ -23,15 +23,18 @@ function routes(app) {
   });
 
   //all persons
-  router.get("/all_persons", (req, res) => {
-    personDb
-      .find()
-      .then((person) => res.json(person))
-      .catch((err) => {
-        console.log(err);
-        res.json(err);
-      });
-  });
+  router.get(
+    "https://next-app-alex-yepes-test.herokuapp.com/all_persons",
+    (req, res) => {
+      personDb
+        .find()
+        .then((person) => res.json(person))
+        .catch((err) => {
+          console.log(err);
+          res.json(err);
+        });
+    }
+  );
 
   // router.get("/api/all_persons", (req, res) => {
   //   return app.render(req, res, "/second");
