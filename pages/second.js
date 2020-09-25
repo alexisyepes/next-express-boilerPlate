@@ -5,7 +5,7 @@ import fetch from "isomorphic-unfetch";
 import axios from "axios";
 import Link from "next/link";
 
-const Second = (props) => {
+const second = (props) => {
   const [persons, setPersons] = useState([]);
   console.log(props);
 
@@ -37,11 +37,12 @@ const Second = (props) => {
   );
 };
 
-Second.getInitialProps = async function () {
-  // const res = await fetch("http://localhost:3000/api/all_persons"); //in development
-  const res = await fetch(
-    "https://next-app-alex-yepes-test.herokuapp.com/api/all_persons" //in production
-  );
+second.getInitialProps = async function ({ req }) {
+  const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";
+  const res = await fetch(baseUrl + "/api/all_persons"); //in development
+  // const res = await fetch(
+  //   "https://next-app-alex-yepes-test.herokuapp.com/api/all_persons" //in production
+  // );
   const data = await res.json();
 
   return {
@@ -55,4 +56,4 @@ Second.getInitialProps = async function () {
 //   return { name: json.person };
 // };
 
-export default Second;
+export default second;
