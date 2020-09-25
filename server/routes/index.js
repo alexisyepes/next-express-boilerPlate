@@ -22,6 +22,17 @@ function routes() {
       });
   });
 
+  //all persons
+  router.get("/all_persons", (req, res) => {
+    personDb
+      .find()
+      .then((person) => res.json(person))
+      .catch((err) => {
+        console.log(err);
+        res.json(err);
+      });
+  });
+
   // router.get("/test/:id", (req, res) => {
   //   return app.render(req, res, "/movies", { id: req.params.id });
   // });
