@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import styles from "../styles/Second.module.css";
-import Button from "../components/Button";
+// import Button from "../components/Button";
+import fetch from "isomorphic-unfetch";
 import axios from "axios";
 import Link from "next/link";
 
-export default (Second) => {
+const Second = (props) => {
   const [persons, setPersons] = useState([]);
+  console.log(props);
 
   const getAllpersons = async () => {
-    await axios
-      .get("/api/all_persons")
-      .then((res) => {
-        setPersons(res.data);
-      })
-      .catch((err) => console.log(err));
+    setPersons(props.data);
   };
   return (
     <div className={styles.secondPageContainer}>
@@ -39,3 +36,23 @@ export default (Second) => {
     </div>
   );
 };
+
+Second.getInitialProps = async () => {
+  // const res = await fetch("http://localhost:3000/api/all_persons");
+  const res = await fetch(
+    "https://next-app-alex-yepes-test.herokuapp.com/api/all_persons" //production url
+  );
+  const data = await res.json();
+
+  return {
+    data,
+  };
+};
+
+// Second.getInitialProps = async (ctx) => {
+//   const res = await fetch("http://localhost:3000/api/all_persons");
+//   const json = await res.json();
+//   return { name: json.person };
+// };
+
+export default Second;
