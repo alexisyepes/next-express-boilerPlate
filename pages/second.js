@@ -37,10 +37,10 @@ const Second = (props) => {
   );
 };
 
-Second.getInitialProps = async () => {
-  // const res = await fetch("http://localhost:3000/api/all_persons");
+Second.getInitialProps = async function () {
+  // const res = await fetch("http://localhost:3000/api/all_persons"); //in development
   const res = await fetch(
-    "https://next-app-alex-yepes-test.herokuapp.com/api/all_persons" //production url
+    "https://next-app-alex-yepes-test.herokuapp.com/api/all_persons" //in production
   );
   const data = await res.json();
 

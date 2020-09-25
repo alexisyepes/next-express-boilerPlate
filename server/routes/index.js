@@ -33,9 +33,9 @@ function routes(app) {
       });
   });
 
-  router.get("/api/all_persons", (req, res) => {
-    return app.render(req, res, "/second");
-  });
+  // router.get("/api/all_persons", (req, res) => {
+  //   return app.render(req, res, "/second");
+  // });
 
   return router;
 }
