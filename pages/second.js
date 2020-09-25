@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import styles from "../styles/Second.module.css";
 // import Button from "../components/Button";
 import fetch from "isomorphic-unfetch";
-import axios from "axios";
+// import axios from "axios";
 import Link from "next/link";
 
-const second = (props) => {
+const Second = (data) => {
   const [persons, setPersons] = useState([]);
-  console.log(props);
+  console.log(data);
 
   const getAllpersons = async () => {
-    setPersons(props.data);
+    setPersons(data.data);
   };
   return (
     <div className={styles.secondPageContainer}>
@@ -37,7 +37,7 @@ const second = (props) => {
   );
 };
 
-second.getInitialProps = async function ({ req }) {
+Second.getInitialProps = async function ({ req }) {
   const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";
   const res = await fetch(baseUrl + "/api/all_persons"); //in development
   // const res = await fetch(
@@ -56,4 +56,4 @@ second.getInitialProps = async function ({ req }) {
 //   return { name: json.person };
 // };
 
-export default second;
+export default Second;
