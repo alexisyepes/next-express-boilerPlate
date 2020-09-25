@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const personDb = require("../../models/person");
 
-function routes() {
+function routes(app) {
   router.get("/test", (req, res) => {
     res.send("We made it! hah hah ha h ");
   });
@@ -33,9 +33,9 @@ function routes() {
       });
   });
 
-  // router.get("/test/:id", (req, res) => {
-  //   return app.render(req, res, "/movies", { id: req.params.id });
-  // });
+  router.get("/api/all_persons", (req, res) => {
+    return app.render(req, res, "/second");
+  });
 
   return router;
 }
