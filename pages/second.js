@@ -12,6 +12,7 @@ const Second = (data) => {
   const getAllpersons = async () => {
     setPersons(data.data);
   };
+
   return (
     <div className={styles.secondPageContainer}>
       <button>
@@ -37,23 +38,25 @@ const Second = (data) => {
   );
 };
 
-Second.getInitialProps = async function () {
-  // const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";
-  // const res = await fetch(baseUrl + "/api/all_persons"); //in development
-  const res = await fetch(
-    "https://next-app-alex-yepes-test.herokuapp.com/api/all_persons" //in production
-  );
+export async function getServerSideProps({ req }) {
+  // Fetch data from external API
+  const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";
+  const res = await fetch(baseUrl + "/api/all_persons");
   const data = await res.json();
 
-  return {
-    data,
-  };
-};
+  // Pass data to the page via props
+  return { props: { data } };
+}
 
-// Second.getInitialProps = async (ctx) => {
-//   const res = await fetch("http://localhost:3000/api/all_persons");
-//   const json = await res.json();
-//   return { name: json.person };
+// Second.getInitialProps = async function ({ req }) {
+//   const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";
+//   const res = await fetch(baseUrl + "/api/all_persons");
+
+//   const data = await res.json();
+
+//   return {
+//     data,
+//   };
 // };
 
 export default Second;
