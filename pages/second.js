@@ -38,25 +38,25 @@ const Second = (data) => {
   );
 };
 
-export async function getServerSideProps({ req }) {
-  // Fetch data from external API
-  const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";
-  const res = await fetch(baseUrl + "/api/all_persons");
-  const data = await res.json();
-
-  // Pass data to the page via props
-  return { props: { data } };
-}
-
-// Second.getInitialProps = async function ({ req }) {
+// export async function getServerSideProps({ req }) {
+//   // Fetch data from external API
 //   const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";
 //   const res = await fetch(baseUrl + "/api/all_persons");
-
 //   const data = await res.json();
 
-//   return {
-//     data,
-//   };
-// };
+//   // Pass data to the page via props
+//   return { props: { data } };
+// }
+
+Second.getInitialProps = async function ({ req }) {
+  const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";
+  const res = await fetch(baseUrl + "/api/all_persons");
+
+  const data = await res.json();
+
+  return {
+    data,
+  };
+};
 
 export default Second;
