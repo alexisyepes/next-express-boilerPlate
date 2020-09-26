@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "../styles/Second.module.css";
 // import Button from "../components/Button";
 import fetch from "isomorphic-unfetch";
